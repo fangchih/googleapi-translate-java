@@ -10,7 +10,14 @@ ENV_INIT_CMD = gcloud auth login
 # 	  docker run -ti --name ${AUTH_VOLUME} ${DOCKER_IMAGE} ${ENV_INIT_CMD}; \
 # 	fi
 
-.PHONY: checkenv bash container
+
+container:
+	docker build -f Dockerfile . -t ${DOCKER_IMAGE}
+
+
+bash:
+	docker run -ti ${DOCKER_RUN_CMD} ${DOCKER_IMAGE} /bin/bash
+
 
 checkenv:
 ifndef GOOGLE_API_KEY
@@ -18,10 +25,4 @@ ifndef GOOGLE_API_KEY
 endif
 
 
-container:
-    docker build -f Dockerfile . -t ${DOCKER_IMAGE}
-
-bash:
-	docker run -ti ${DOCKER_RUN_CMD} ${DOCKER_IMAGE} /bin/bash
-
-
+.PHONY: checkenv bash container
