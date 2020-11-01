@@ -29,6 +29,7 @@ import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
+
 /**
  * A snippet for Google Translation showing how to detect the language of some text and translate
  * some other text.
